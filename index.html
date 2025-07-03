@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculo Luminotécnico NBR10 Avioeste</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <img src="Imagem2.jpg" alt="Logo" style="display:block; margin: 0 auto 20px auto; max-width:180px;">
+        <h1>CALCULO LUMINOTÉCNICO</h1>
+        <h3>DE ACORDO COM A NBR 5410</h3>
+        <form id="calcForm">
+            <h3>Dimensões da Instalação</h3>
+            <div class="row">
+                <div class="column">
+                    <label for="field1">Comprimento (m):</label>
+                    <input type="number" id="field1" required placeholder="Metros" step="any">
+                </div>
+                <div class="column">
+                    <label for="field2">Largura  (m):</label>
+                    <input type="number" id="field2" required placeholder="Metros" step="any">
+                </div>
+                <div class="column">
+                    <label for="field3">Altura (m):</label>
+                    <input type="number" id="field3" required placeholder="Metros" step="any">
+                </div>
+                <div class="column">
+                    <label for="field4">Altura Alvo (m):</label>
+                    <input type="number" id="field4" required placeholder="Metros" step="any">
+                </div>
+            </div>    
+
+            <br></br>
+            <h3>Claridade do Ambiente</h3>
+            <!-- Checkbox group (only one selectable, using radio buttons for this behavior) -->
+             <div class="row">
+                <div class="column">
+                    <fieldset>
+                        <legend>Teto:</legend>
+                        <label>
+                            <input type="radio" name="field5" value="optionA" required>
+                            Muito Clara
+                        </label>
+                        <label>
+                            <input type="radio" name="field5" value="optionB">
+                            Clara
+                        </label>
+                        <label>
+                            <input type="radio" name="field5" value="optionC">
+                            Média
+                        </label>
+                        <label>
+                            <input type="radio" name="field5" value="optionD">
+                            Escura
+                        </label>
+                        <label>
+                            <input type="radio" name="field5" value="optionE">
+                            Preta
+                        </label>
+                            </fieldset>
+                </div>
+                <div class="column">
+                    <fieldset>
+                        <legend>Parede:</legend>
+                        <label>
+                            <input type="radio" name="field6" value="optionA">
+                            Clara
+                        </label>
+                        <label>
+                            <input type="radio" name="field6" value="optionB">
+                            Média
+                        </label>
+                        <label>
+                            <input type="radio" name="field6" value="optionC">
+                            Escura
+                        </label>
+                        <label>
+                            <input type="radio" name="field6" value="optionD">
+                            Preta
+                        </label>
+                    </fieldset>
+                </div>
+                <div class="column">
+                    <fieldset>
+                        <legend>Piso:</legend>
+                        <label>
+                            <input type="radio" name="field7" value="optionA">
+                            Escura
+                        </label>
+                        <label>
+                            <input type="radio" name="field7" value="optionB">
+                            Preta
+                        </label>
+                    </fieldset>
+                </div>
+                <div class="column">
+                    <fieldset>
+                        <legend>Limpeza:</legend>
+                        <label>
+                            <input type="radio" name="field8" value="optionA" required>
+                            Limpo
+                        </label>
+                        <label>
+                            <input type="radio" name="field8" value="optionB">
+                            Médio
+                        </label>
+                        <label>
+                            <input type="radio" name="field8" value="optionC">
+                            Sujo
+                        </label>
+                    </fieldset>
+                </div>
+            </div>
+
+            <br></br>
+            <h3>Dados de Luminosidade</h3>
+            <div class="row">
+                <div class="column">
+                    <label for="field9">Luminosidade Alvo (lux):</label>
+                    <input type="number" id="field9" required placeholder="lux" step="any">
+                </div>
+                <div class="column">
+                    <label for="field10">Lampadas por Luminária (und.):</label>
+                    <input type="number" id="field10" required placeholder="und." step="any">
+                </div>
+                <div class="column">
+                    <label for="field11">Fluxo luminoso por lâmpada (lúmens):</label>
+                    <input type="number" id="field11" required placeholder="lúmens" step="any">
+                </div>
+                <div class="column">
+                    <label for="field12">Potência por lâmpada  (W):</label>
+                    <input type="number" id="field12" required placeholder="Watts" step="any">
+                </div>
+            </div>  
+            
+            <br></br>
+            <h3>Dados de Consumo e Preferência de Instalação (Opcional)</h3>
+            <div class="row">
+                <div class="column">
+                    <label for="field13">Tempo de utilização diário (h):</label>
+                    <input type="number" id="field13" placeholder="horas" step="any">
+                </div>
+                <div class="column">
+                    <label for="field14">Fileiras de Luminárias Desejadas(und.):</label>
+                    <input type="number" id="field14" placeholder="unidades" step="any">
+                </div>
+                <div class="column">
+                    <label for="field15">Altura da lâmpada ao teto (m) (opcional):</label>
+                    <input type="number" id="field15" placeholder="0,30 Metros (Padrão)" step="any">
+                </div>
+            </div>  
+            
+            <br></br>
+            <button type="submit">Calcular</button>
+            <button type="button" id="clearBtn">Limpar</button>
+        </form>
+
+        <br></br>
+        
+        <center><div id="result"></div></div></center>
+
+        <br></br>
+
+        <img src="image1.png" alt="Mapa" style="display:block; margin: 0 auto 20px auto; max-width:380px;">
+        
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
