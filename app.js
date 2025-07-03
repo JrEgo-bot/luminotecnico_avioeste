@@ -13,6 +13,34 @@ document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('calcForm');
     const resultDiv = document.getElementById('result');
 
+
+    // Dropdown for Luminárias
+        const products = [
+            { name: "34022 LAMPADA LED INOBRAM WY-05 E27 10W 220V 4500K BRANCA DIMERIZAVEL", value: "1", f: 1200, P: 10 },
+            { name: "31561 LAMPADA LED GALAXY A60 CONCEPT E27 9,5W 240V 6500K BRANCA DIMERIZAVEL", value: "2", f: 810, P: 9.5 },
+            { name: "34023 LAMPADA LED INOBRAM WY-06 E27 10W 220V 2700K AMARELA DIMERIZAVEL", value: "3", f: 900, P: 10 },
+            { name: "25877 LAMPADA LED OSRAM E27 17W 220V 6500K BRANCA NÃO DIMERIZAVEL", value: "4", f: 1521, P: 17 },
+            { name: "385324 LAMPADA LED TUBULAR T20/120 20W 3000K", value: "5", f: 1850, P: 20 },
+            { name: "9253 LAMPADA LED INOBRAM WY-04 E27 10W 220V 2700K AMARELA DIMERIZAVEL", value: "6", f: 900, P: 10 },
+            { name: "7630 LAMPADA LED BRILIA E27 15W 100V - 240V 3000K AMARELA NAO DIMERIZAVEL", value: "7", f: 1311, P: 15 },
+            { name: "34349 LAMPADA LED GALAXY BULBO A60 E27 12W 240V 3000K AMARELA NÃO DIMERIZAVEL", value: "8", f: 1018, P: 12 },
+            { name: "33617 LAMPADA LED EMPALUX E27 9W 220V 2400K BRANCO QUENTE NAO DIMERIZAVEL", value: "9", f: 810, P: 9 },
+            { name: "387233 LAMPADA LED GALAXY E27 15W 100V - 240V 3000K AMARELA NAO DIMERIZAVEL", value: "10", f: 1300, P: 15 },
+            { name: "27430 LAMPADA LED EMPALUX E27 9W 127V - 220V 6500K BRANCA NÃO DIMERIZAVEL", value: "11", f: 810, P: 9 },
+            { name: "380739 LAMPADA LED E27 11W 220-240V 6500K IP66 DIMERIZAVEL – SM", value: "12", f: 1018, P: 11 },
+            { name: "380741 LAMPADA LED E27 15W 220-240V 2700K IP66 DIMERIZAVEL – SM", value: "13", f: 1507, P: 15 },
+            { name: "382277 LAMPADA LED METALED E27 9W 220-240V 6500K BRANCA IP20 DIMERIZAVEL", value: "14", f: 1020, P: 9 }
+        ];
+        // Populate the dropdown
+        const lumSelect = document.getElementById('field16');
+        products.forEach(product => {
+            const option = document.createElement('option');
+            option.value = product.value;
+            option.textContent = product.name;
+            lumSelect.appendChild(option);
+        });      
+
+
     form.addEventListener('submit', function(event) {
         event.preventDefault();
         
@@ -43,13 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         const field7 = field7Map[field7Value];
 
-        const field8Value = document.querySelector('input[name="field8"]:checked').value;
-        const field8Map = {   // Map radio value to output
-            optionA: 0.8,
-            optionB: 0.7,
-            optionC: 0.6,
-        };
-        const field8 = field8Map[field8Value];
+        const field8 = 0.6; // Fator de reflexão do piso (default to 0.6)
 
 
         // Gather input values
@@ -58,12 +80,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const field3 = document.getElementById('field3').value; //Altura
         const field4 = document.getElementById('field4').value; //Altura Alvo
         const field9 = document.getElementById('field9').value; //Luminosidade Alvo
-        const field10 = document.getElementById('field10').value; //Lampadas por Luminária
+        const field10 = 1; //Lampadas por Luminária (default to 1)
         const field11 = document.getElementById('field11').value; //Fluxo Luminoso por lâmpada
         const field12 = document.getElementById('field12').value; //Potência por lâmpada
-        const field13 = document.getElementById('field13').value; //Utilização Diária
-        const field14 = document.getElementById('field14').value; //Fileiras de Luminárias desejado
-        const field15 = document.getElementById('field15').value; //Hs
+
+        let field13 = document.getElementById('field13').value || 24;
+        let field14 = document.getElementById('field14').value || 5;
+        let field15 = document.getElementById('field15').value || 0.3;
+
+        const field16 = 0; 
 
         const H = parseFloat(field3) - parseFloat(field4) - parseFloat(field15); //Pé direito - Altura da lampada ao teto - Altura de medição
         const K = (parseFloat(field1) * parseFloat(field2)) / (H * (parseFloat(field1) + parseFloat(field2))); //1 - Índice do local (K)
@@ -223,18 +248,28 @@ document.addEventListener('DOMContentLoaded', function() {
             U = 0; 
         }
 
-        const E = parseFloat(field9);
-        const n = parseFloat(field10);
-        const f = parseFloat(field11);
-        const C = parseFloat(field1);
-        const L = parseFloat(field2);
-        const Fpl = parseFloat(field8);
+        const E = parseFloat(field9); // Níveis de iluminância desejada (lux)
+        const n = parseFloat(field10); // Quantidade de lâmpadas por luminária        
+        const C = parseFloat(field1); // COMPRIMENTO DO AMBIENTE
+        const L = parseFloat(field2); // LARGURA DO AMBIENTE
+        const Fpl = parseFloat(field8); //Fator de perdas luminosas (PADRÃO SUJO)
+
+        const field16Value = document.getElementById('field16').value;
+        const selectedProduct = products.find(p => p.value === field16Value);
+
+        let f, P;
+        if (selectedProduct) {
+            f = selectedProduct.f;
+            P = selectedProduct.P;
+        } else {
+            f = parseFloat(field11); // fallback to manual input
+            P = parseFloat(field12);
+        }
 
         // Perform calculations
         const N_lamps = Math.ceil((E * C * L) / (U * n * f * Fpl)); //Número de Luminárias     
         const Em = ((N_lamps  * n * f * U * Fpl) / (C * L)); //Iluminância Média
 
-        const P = parseFloat(field12);
         const P_inst = (N_lamps * P) / 1000; //Potência instalada
 
         const D_pot = (1000 * P_inst) / (C * L); //Densidade de Potência
@@ -253,8 +288,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Display result
         const formatNumber = num => Number(num).toLocaleString('pt-BR', { maximumFractionDigits: 2 });
-
-        
 
         if (U === 0) {
             resultDiv.innerHTML = `
