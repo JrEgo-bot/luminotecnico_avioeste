@@ -6,13 +6,32 @@ document.getElementById('calcForm').addEventListener('submit', function(event) {
 
 document.getElementById('clearBtn').addEventListener('click', function() {
     document.getElementById('calcForm').reset();
+
+    field11.disabled = true;
+        field12.disabled = true;
+        field16.disabled = false;
+        field16.value = ''; // Clear the dropdown selection
+        option.value = '';
     document.getElementById('result').textContent = '';
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('calcForm');
     const resultDiv = document.getElementById('result');
+    
+    const editLampBtn = document.getElementById('editLampBtn');
+    editLampBtn.addEventListener('click', function() {
+        field11.disabled = false;
+        field12.disabled = false;
+        field16.disabled = true;
+        field16.value = ''; // Clear the dropdown selection
+        // Reset placeholders to default
+        field11.placeholder = "lúmens";
+        field12.placeholder = "Watts";
 
+        editLampBtn.disabled = true; // Optional: disable the button after click
+    });
 
     // Dropdown for Luminárias
         const products = [
@@ -38,7 +57,18 @@ document.addEventListener('DOMContentLoaded', function() {
             option.value = product.value;
             option.textContent = product.name;
             lumSelect.appendChild(option);
-        });      
+        });        
+
+        lumSelect.addEventListener('change', function() {
+        const selectedProduct = products.find(p => p.value === lumSelect.value);
+        if (selectedProduct) {
+            field11.placeholder = selectedProduct.f + ' lúmens';
+            field12.placeholder = selectedProduct.P + ' Watts';
+        } else {
+            field11.placeholder = "lúmens";
+            field12.placeholder = "Watts";
+        }
+        });
 
 
     form.addEventListener('submit', function(event) {
@@ -87,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let field13 = document.getElementById('field13').value || 24;
         let field14 = document.getElementById('field14').value || 5;
         let field15 = document.getElementById('field15').value || 0.3;
-
         const field16 = 0; 
 
         const H = parseFloat(field3) - parseFloat(field4) - parseFloat(field15); //Pé direito - Altura da lampada ao teto - Altura de medição
@@ -304,10 +333,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li><strong>Densidade de Potência:</strong> ${formatNumber(D_pot)} W/m²</li>
                     <li><strong>Consumo Estimado:</strong> ${formatNumber(C_est)} kWh/mês</li>
                     <li><strong>Luminárias por fileira:</strong> ${formatNumber(Q_fileira)} luminárias/fileira</li>
-                    <li><strong>Distância entre luminárias:</strong> ${formatNumber(Dis_a)} m (no comprimento)</li>
-                    <li><strong>Distância entre luminárias:</strong> ${formatNumber(Dis_b)} m (no largura)</li>
-                    <li><strong>Distância da luminária até a parede:</strong> ${formatNumber(Dis_a/2)} m (no comprimento)</li>
-                    <li><strong>Distância da luminárias até a parede:</strong> ${formatNumber(Dis_b/2)} m (no largura)</li>
+                    <li><strong>Distância entre luminárias (a):</strong> ${formatNumber(Dis_a)} m (no comprimento)</li>
+                    <li><strong>Distância entre luminárias (b):</strong> ${formatNumber(Dis_b)} m (no largura)</li>
+                    <li><strong>Distância da luminária até a parede (a/2):</strong> ${formatNumber(Dis_a/2)} m (no comprimento)</li>
+                    <li><strong>Distância da luminárias até a parede (b/2):</strong> ${formatNumber(Dis_b/2)} m (no largura)</li>
                 </ul>
             `;
         }
