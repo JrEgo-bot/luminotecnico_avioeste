@@ -9,8 +9,8 @@
 <body>
     <div class="container">
         <img src="Imagem2.jpg" alt="Logo" style="display:block; margin: 0 auto 20px auto; max-width:180px;">
-        <h1>CALCULO LUMINOTÉCNICO</h1>
-        <h3>DE ACORDO COM A NBR 5413</h3>
+        <h1>CÁLCULO LUMINOTÉCNICO</h1>
+        <h3>DE ACORDO COM A NBR 5413</h3>        
         <form id="calcForm">
             <h3>Dimensões da Instalação</h3>
             <div class="row">
@@ -114,16 +114,17 @@
                     </select>
                 </div>
             </div>  
-            <div class="row">
+            <div class="row">                
+                <button type="button" id="editLampBtn">✎</button>                
                 <div class="column">
                     <label for="field11">Fluxo luminoso por lâmpada (lúmens):</label>
-                    <input type="number" id="field11" placeholder="lúmens" step="any">
+                    <input type="number" id="field11" placeholder="lúmens" step="any" disabled>
                 </div>
                 <div class="column">
                     <label for="field12">Potência por lâmpada  (W):</label>
-                    <input type="number" id="field12" placeholder="Watts" step="any">
-                </div>
-            </div>  
+                    <input type="number" id="field12" placeholder="Watts" step="any" disabled>
+                </div>                
+            </div> 
             
             <br></br>
             <h3>Dados de Consumo e Preferência de Instalação (Opcional)</h3>
@@ -136,7 +137,7 @@
             <div class="row">
                 <div class="column">
                     <label for="field14">Fileiras de Luminárias Desejadas(und.):</label>
-                    <input type="number" id="field14" placeholder="5 unidades (Padrão)" step="any">
+                    <input type="number" id="field14" placeholder="5 fileiras (Padrão)" step="any">
                 </div>
                 <div class="column">
                     <label for="field15">Altura da lâmpada ao teto (m) (opcional):</label>
@@ -156,6 +157,10 @@
         <br></br>
 
         <img src="image1.png" alt="Mapa" style="display:block; margin: 0 auto 20px auto; max-width:380px;">
+
+        <br></br>
+        <br></br>
+        <p style="text-align: center;">© 2025 Corti Avioeste - Todos os direitos reservados. Versão 0.03 (Rev. 01) 04/07/2025</p>
         
     </div>
     <script src="app.js"></script>
