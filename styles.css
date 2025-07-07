@@ -109,3 +109,33 @@ button:hover {
 .column {
     flex: 1;
 }
+
+.tooltip {
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px dotted #555;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 260px;
+  background-color: #333;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 8px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%; /* Position above */
+  left: 50%;
+  margin-left: -130px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 0.95em;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
