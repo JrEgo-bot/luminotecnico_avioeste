@@ -25,6 +25,7 @@
     </style>
 </head>
 <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <a href="help.html" class="help-link" title="Ajuda" target="_blank">🛈</a>
     <div class="container">
         <img src="Imagem2.jpg" alt="Logo" style="display:block; margin: 0 auto 20px auto; max-width:180px;">
@@ -48,7 +49,10 @@
                     <input type="number" id="field3" required placeholder="Metros" step="any">
                 </div>
                 <div class="column">
-                    <label for="field4">Altura Alvo (m):</label>
+                    <label for="field4" class="tooltip">
+                        Altura de Medição (m):
+                        <span class="tooltiptext">Informe a altura em que será feita a medição de iluminância, normalmente 0,30m para ambientes de aviários de frango de corte.</span>
+                    </label>
                     <input type="number" id="field4" required placeholder="Metros" step="any">
                 </div>
             </div>
@@ -171,15 +175,24 @@
 
         <br></br>
         
-        <center><div id="result"></div></div></center>
+        <center>
+            <div id="result">                           
+            </div>
+        </center>      
+        </div>
 
         <br></br>
 
+        <center><button type="button" id="downloadPdfBtn" style="display:none;">Baixar PDF</button></center>,
+
+        <br></br>
+        
         <img src="image1.png" alt="Mapa" style="display:block; margin: 0 auto 20px auto; max-width:380px;">
 
         <br></br>
         <br></br>
-        <p style="text-align: center;">© 2025 Corti Avioeste - Todos os direitos reservados. Versão 0.05 07/07/2025</p>
+        
+        <p style="text-align: center;">© 2025 Corti Avioeste - Todos os direitos reservados. Versão 0.06 07/07/2025</p>
         
     </div>
     <script src="app.js"></script>
