@@ -4,33 +4,36 @@ document.getElementById('calcForm').addEventListener('submit', function(event) {
     event.preventDefault();
 });
 
-document.getElementById('clearBtn').addEventListener('click', function() {
-    document.getElementById('calcForm').reset();
-
-    field11.disabled = true;
-        field12.disabled = true;
-        field16.disabled = false;
-        field16.value = ''; // Clear the dropdown selection
-        option.value = '';
-    document.getElementById('result').textContent = '';
-});
-
+   
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('calcForm');
     const resultDiv = document.getElementById('result');
-    
+    const clearBtn = document.getElementById('clearBtn');
     const editLampBtn = document.getElementById('editLampBtn');
+    const field11 = document.getElementById('field11');
+    const field12 = document.getElementById('field12');
+    const field16 = document.getElementById('field16');
+
+    clearBtn.addEventListener('click', function() {
+        form.reset();
+        resultDiv.innerHTML = "";
+        field11.disabled = true;
+        field12.disabled = true;
+        field16.disabled = false;
+        field11.placeholder = "lúmens";
+        field12.placeholder = "Watts";
+        editLampBtn.disabled = false;
+    });
+
     editLampBtn.addEventListener('click', function() {
         field11.disabled = false;
         field12.disabled = false;
         field16.disabled = true;
-        field16.value = ''; // Clear the dropdown selection
-        // Reset placeholders to default
+        field16.value = '';
         field11.placeholder = "lúmens";
         field12.placeholder = "Watts";
-
-        editLampBtn.disabled = true; // Optional: disable the button after click
+        editLampBtn.disabled = true;
     });
 
     // Dropdown for Luminárias
