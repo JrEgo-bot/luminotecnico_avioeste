@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         const field7 = field7Map[field7Value];
 
-        const field8 = 0.6; // Fator de reflexão do piso (default to 0.6)
+        const field8 = 0.8; // Fator de reflexão do piso (default to 0.8 - Limpo)
 
 
         // Gather input values
