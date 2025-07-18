@@ -54,72 +54,55 @@
                 <div class="column">
                     <label for="field4" class="tooltip">
                         Altura de Medição (m):
-                        <!-- <span class="tooltiptext">Informe a altura em que será feita a medição de iluminância, normalmente 0,30m para ambientes de aviários de frango de corte.</span> -->
-                        <!-- Erro no servidor do GitHub, não está carregando o CSS do tooltoptext -->
+                        <span class="tooltiptext">Informe a altura em que será feita a medição de iluminância, normalmente 0,30m para ambientes de aviários de frango de corte.</span>
                     </label>
                     <input type="number" id="field4" required placeholder="Metros" step="any">
                 </div>
             </div>
 
             <br></br>
-            <h3>Claridade do Ambiente</h3>
-            <!-- Checkbox group (only one selectable, using radio buttons for this behavior) -->
+            <h3>Claridade do Ambiente (Cor das Cortinas)</h3>
+
+            <!-- Checkbox group -->
              <div class="row">
                 <div class="column">
                     <fieldset>
                         <legend>Teto:</legend>
                         <label>
                             <input type="radio" name="field5" value="optionA" required>
-                            Muito Clara
+                            Branca
                         </label>
                         <label>
                             <input type="radio" name="field5" value="optionB">
-                            Clara
+                            Amarela
                         </label>
                         <label>
                             <input type="radio" name="field5" value="optionC">
-                            Média
+                            Azul
                         </label>
                         <label>
                             <input type="radio" name="field5" value="optionD">
-                            Escura
-                        </label>
-                        <label>
-                            <input type="radio" name="field5" value="optionE">
-                            Preta
+                            Cinza/Preta
                         </label>
                             </fieldset>
                 </div>
                 <div class="column">
                     <fieldset>
-                        <legend>Parede:</legend>
+                        <legend>Laterais:</legend>
                         <label>
                             <input type="radio" name="field6" value="optionA">
-                            Clara
+                            Branca/Amarela
                         </label>
                         <label>
                             <input type="radio" name="field6" value="optionB">
-                            Média
+                            Azul
                         </label>
                         <label>
                             <input type="radio" name="field6" value="optionC">
-                            Escura
+                            Cinza
                         </label>
                         <label>
                             <input type="radio" name="field6" value="optionD">
-                            Preta
-                        </label>
-                    </fieldset>
-                </div>
-                <div class="column">
-                    <fieldset>
-                        <legend>Piso:</legend>
-                        <label>
-                            <input type="radio" name="field7" value="optionA">
-                            Escura
-                        </label>
-                        <label>
-                            <input type="radio" name="field7" value="optionB">
                             Preta
                         </label>
                     </fieldset>
@@ -137,7 +120,6 @@
                     <label for="field16">Selecione uma Luminária (Opcional):</label>
                     <select id="field16">
                         <option value="">Selecione...</option>
-                        <!-- Options will be added dynamically -->
                     </select>
                 </div>
             </div>  
@@ -154,13 +136,8 @@
             </div> 
             
             <br></br>
-            <h3>Dados de Consumo e Preferência de Instalação (Opcional)</h3>
-            <div class="row">
-                <div class="column">
-                    <label for="field13">Tempo de utilização diário (h):</label>
-                    <input type="number" id="field13" placeholder="24 horas (Padrão)" step="any">
-                </div>
-            </div>  
+            <h3>Preferência de Instalação (Opcional)</h3>
+
             <div class="row">
                 <div class="column">
                     <label for="field14">Fileiras de Luminárias Desejadas(und.):</label>
@@ -186,17 +163,24 @@
         </div>
 
         <br></br>
+        <br></br>
 
-        <center><button type="button" id="downloadPdfBtn" style="display:none;">Baixar PDF</button></center>,
+        <div id="afterSubmitItems" style="display:none">
+                <center>## AQUI VAI A IMAGEM DA DISTRIBUIÇÃO DAS LÂMPADAS ##</center>
+        </div>
 
         <br></br>
-        
-        <img src="image1.png" alt="Mapa" style="display:block; margin: 0 auto 20px auto; max-width:380px;">
+        <br></br>
 
-        <br></br>
-        <br></br>
-        
-        <p style="text-align: center;">© 2025 Corti Avioeste - Todos os direitos reservados. Versão 0.06 07/07/2025</p>
+        <center>
+            <button type="button" id="downloadPdfBtn" style="display:none;">
+                Baixar PDF
+            </button>
+        </center>
+        <br></br>        
+        <br></br>      
+
+        <p style="text-align: center;">© 2025 Corti Avioeste - Todos os direitos reservados. Versão 0.08 17/07/2025</p>
         
     </div>
     <script src="app.js"></script>
