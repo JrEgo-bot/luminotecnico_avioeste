@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
             resultDiv.innerHTML = `
                 <div style="color: #dc3545; font-weight: bold; font-size: 1.2em; margin-bottom: 20px;">
                     Não foi possível calcular, verifique se uma lâmpada foi selecionada. Caso sua lâmpada
-                    não esteja na lista, favor clicar no botão "editar" (✎) e preencher o fLuxo luminoso e a
+                    não esteja na lista, favor clicar no botão "editar" (✎) e preencher o fluxo luminoso e a
                     potência da mesma.
                 </div>
             `;
@@ -396,8 +396,6 @@ document.addEventListener('DOMContentLoaded', function() {
         else {
             resultDiv.innerHTML = `
                 <ul>
-                    <li><strong>Q. fil.:</strong> ${formatNumber(Q_fileiras_default)} luminárias</li>
-                    <li><strong>Q. fil. default:</strong> ${formatNumber(Q_fileiras)} luminárias</li>
                     <li><strong>Número de Luminárias:</strong> ${formatNumber(N_lamps_final)} luminárias</li>
                     <li><strong>Iluminância Média:</strong> ${formatNumber(Em)} lux</li>
                     <li><strong>Potência instalada:</strong> ${formatNumber(P_inst)} kW</li>
